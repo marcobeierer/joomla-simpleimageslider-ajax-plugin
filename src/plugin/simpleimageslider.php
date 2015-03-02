@@ -23,7 +23,7 @@ class plgAjaxSimpleimageslider extends JPlugin {
 		$directory = $_GET['directory'];
 		unset($_GET['directory']);
 
-		if (preg_match('/^(([a-z]+)(\/[a-z]+)?)*$/i', $directory) !== 1) {
+		if (preg_match('/^(([a-z0-9_\-]+)(\/[a-z0-9_\-]+)?)*$/i', $directory) !== 1) {
 			return false;
 		}
 
@@ -101,7 +101,12 @@ class plgAjaxSimpleimageslider extends JPlugin {
 
 		// TODO check if resized image already exists
 
-		$photo = new Imagick($photoPath);
+		if (class_exists(Imagick)) {
+			$photo = new Imagick($photoPath);
+		} else {
+			require_once('imagewrapper.php');
+			$photo = new ImageWrapper($photoPath);
+		}
 
 		if ($width > $photo->getImageWidth() || $width < 0) {
 			$width = $photo->getImageWidth();
