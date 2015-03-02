@@ -15,6 +15,7 @@
 
 	<files folder="plugin">
 		<filename plugin="simpleimageslider">simpleimageslider.php</filename>
+		<file>imagewrapper.php</file>
 	</files>
 
 	<languages folder="language">
