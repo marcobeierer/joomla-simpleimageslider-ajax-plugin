@@ -36,14 +36,14 @@ class plgAjaxSimpleimageslider extends JPlugin {
 			$photos = array();
 
 			// TODO fix duplicate code
-			foreach (glob($searchPath . '/*.jpg') as $photoPath) {
+			foreach (glob($searchPath . '/{*.jpg,*.JPG}') as $photoPath) {
 				$filename = substr($photoPath, strrpos($photoPath, '/') + 1); 
 				$photos[$filename] = $photoPath;
 			}   
 
 			foreach (glob($searchPath . '*', GLOB_ONLYDIR) as $currentPath) {
 
-				foreach (glob($currentPath . '/*.jpg') as $photoPath) { 
+				foreach (glob($currentPath . '/{*.jpg,*.JPG}') as $photoPath) { 
 					$filename = substr($photoPath, strrpos($photoPath, '/') + 1); 
 					$photos[$filename] = $photoPath;
 				}   
