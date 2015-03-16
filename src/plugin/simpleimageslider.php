@@ -101,7 +101,7 @@ class plgAjaxSimpleimageslider extends JPlugin {
 
 		// TODO check if resized image already exists
 
-		if (class_exists(Imagick)) {
+		if (class_exists('Imagick')) {
 			$photo = new Imagick($photoPath);
 		} else {
 			require_once('imagewrapper.php');
@@ -134,6 +134,7 @@ class plgAjaxSimpleimageslider extends JPlugin {
 
 		$returnArray = array(
 			'photoPath' => $cachePath . '/' . $filename,
+			'photoWidth' => $resizedPhotoWidth,
 			'photoHeight' => $resizedPhotoHeight,
 			'photoOriginalPath' => $photoPath,
 			'isFirst' => $isFirst,
