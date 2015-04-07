@@ -36,14 +36,14 @@ class plgAjaxSimpleimageslider extends JPlugin {
 			$photos = array();
 
 			// TODO fix duplicate code
-			foreach (glob($searchPath . '/*.{jpg,JPG}', GLOB_BRACE) as $photoPath) {
+			foreach (glob($searchPath . '*.{jpg,JPG}', GLOB_BRACE) as $photoPath) {
 				$filename = substr($photoPath, strrpos($photoPath, '/') + 1); 
 				$photos[$filename] = $photoPath;
 			}   
 
 			foreach (glob($searchPath . '*', GLOB_ONLYDIR) as $currentPath) {
 
-				foreach (glob($currentPath . '/*.{jpg,JPG}', GLOB_BRACE) as $photoPath) { 
+				foreach (glob($currentPath . '*.{jpg,JPG}', GLOB_BRACE) as $photoPath) { 
 					$filename = substr($photoPath, strrpos($photoPath, '/') + 1); 
 					$photos[$filename] = $photoPath;
 				}   
@@ -86,7 +86,7 @@ class plgAjaxSimpleimageslider extends JPlugin {
 			return false;
 		case 'current':
 			$key = array_search($_GET['currentPhoto'], $photos);
-			$key = array_search($keyCurrent, $keysOfPhotoArray);
+			$key = array_search($key, $keysOfPhotoArray);
 			if (!is_int($key)) {
 				return false;
 			}
