@@ -84,6 +84,13 @@ class plgAjaxSimpleimageslider extends JPlugin {
 				break;
 			}
 			return false;
+		case 'current':
+			$key = array_search($_GET['currentPhoto'], $photos);
+			$key = array_search($keyCurrent, $keysOfPhotoArray);
+			if (!is_int($key)) {
+				return false;
+			}
+			break;
 		default:
 			return false;
 		}
